@@ -1,41 +1,23 @@
 new Vue({
     el:'#vue-app',    // must match div id on index.html
     data: {
-        name: 'Leon',    // can reference this variable with {{ name }} in index.html
-        job: 'Programmer',
-        website: 'https://github.com/leon-lei?tab=repositories',
-        websiteTag: '<a href="https://github.com/leon-lei?tab=repositories">Github Profile Link</>',
-        age: 27,
-        x: 0,
-        y: 0,
-        food: '',
-        color: '',
+        account:'',
+        accountId:'',
+        reportStart:'',
+        reportEnd:'',
     },
     methods: {
-        greet: function(time, person){     // passing in multiple args to greet function
-            return 'Good ' + time + ' ' + person + ' ' + this.name;   // referencing name from 'data' with this.name
+        sendRequestHello: function(){
+            fetch('http://127.0.0.1:8000/hello/')
+                .then(response => response.json())
+                .then(data => console.log(data))
         },
-        add: function(){
-            this.age++;
-        },
-        subtract: function(){
-            this.age--;
-        },
-        argAdd: function(inc){
-            this.age += inc;
-        },
-        argSubtract: function(dec){
-            this.age -= dec;
-        },
-        updateXY: function(event){    // automatically get event obj passed with v-on events
-            this.x = event.offsetX;
-            this.y = event.offsetY;
-        },
-        logName: function(){
-            console.log('You log name');
-        },
-        logAge: function(){
-            console.log('You log age');
+        sendRequest: function(account, accountId, reportStart, reportEnd){
+            console.log(account, accountId, reportStart, reportEnd)
+   
+            // fetch('http://127.0.0.1:8000/')
+            //     .then(response => response.json())
+            //     .then(data => console.log(data))
         },
     }
 });

@@ -11,37 +11,20 @@
 </head>
 <body>
     <div id="vue-app">
-        <h1>{{ greet('Night', 'Boy') }}</h1>    <!-- pass in multiple args to greet function-->
-        <p>Name: {{ name }}</p>
-        <p>Job: {{ job }}</p>
 
-        <h1>Data Binding</h1>
-        <a v-bind:href="website">Github Profile</a>
-        <input type="text" v-bind:value="job" />    <!-- v-bind will allow referencing to variables stored in 'data'-->
-        <p v-html="websiteTag"></p>    <!-- outputs the html-->
-
-        <h1>Events</h1>
-        <button v-on:click="add">Add a Year</button>    <!-- v-on directive listening for click event and calling 'methods'-->
-        <button @click="subtract">Subtract a Year</button>    <!-- @ is shorthand for v-on: -->
-        <button v-on:dblclick="argAdd(10)">Add 10 Years</button>   <!-- passing in arg to arg_add function-->
-        <button v-on:dblclick="argSubtract(10)">Subtract 10 Years</button>
-        <p>My age is {{ age }}</p>
-        <div id="canvas" v-on:mousemove="updateXY">{{ x }},{{ y }}</div>
-
-        <h1>Keyboard Events</h1>
-        <label>Name:</label>
-        <input type="text" v-on:keyup.enter="logName"/>    <!-- .enter is an event modifier-->
-        <label>Age:</label>
-        <input type="text" v-on:keyup.alt.enter="logAge"/>    <!-- .at.enter is chaining event modifiers-->
-
-        <h1>Two Way Data Binding</h1>
-        <label>Food:</label>
-        <input type="text" v-model="food"/>    <!-- v-model attaches the input to the variable in 'data'-->
-        <span>{{ food }}</span>    <!-- food variable is referenced from 'data'-->
-        <label>Color:</label>
-        <input type="text" v-model="color"/>
-        <span>{{ color }}</span>
-
+        <h1>Request</h1>
+        <button v-on:click="sendRequestHello">Send request for hello</button>
+        <div>
+            <label>Account:</label>
+            <input type="text" v-model="account"/>
+            <label>AccountId:</label>
+            <input type="text" v-model="accountId"/>
+            <label>reportStart:</label>
+            <input type="text" v-model="reportStart"/>
+            <label>reportEnd:</label>
+            <input type="text" v-model="reportEnd"/>
+            <button v-on:click="sendRequest(account, accountId, reportStart, reportEnd)">Send request</button>
+        </div>
     </div>
     
     <script src="app.js"></script>
